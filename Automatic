@@ -1,0 +1,54 @@
+import RPi.GPIO as gpio
+import time
+
+# 3 = red , 5 = yellow, 7 = green
+def init():
+    gpio.setmode(gpio.BOARD)
+    gpio.setup (3, gpio.OUT)
+    gpio.setup (5, gpio.OUT)
+    gpio.setup (7, gpio.OUT)
+    
+def red():
+    init()
+    gpio.output(3, True)
+    gpio.output(5, False)
+    gpio.output(7, False)
+    time.sleep(2)
+    gpio.cleanup()
+    
+def amber():
+    init()
+    gpio.output(3, True)
+    gpio.output(5, True)
+    gpio.output(7, False)
+    time.sleep(1)
+    gpio.cleanup()
+    
+def yellow():
+    init()
+    gpio.output(3, False)
+    gpio.output(5, True)
+    gpio.output(7, False)
+    time.sleep(0.05)
+    gpio.cleanup()
+    
+def green():
+    init()
+    gpio.output(3, False)
+    gpio.output(5, False)
+    gpio.output(7, True)
+    time.sleep(3)
+    gpio.cleanup()
+    
+var = ""
+var = input('Type on')
+
+while input != "":
+  var = input('Type on')
+  if var == "on":
+  
+   red()
+   amber() 
+   yellow()
+   green()
+   break
